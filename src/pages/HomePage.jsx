@@ -1,8 +1,8 @@
-import SimpleSlider from "components/HomeBanner";
+import HomeBanner from "components/HomeBanner";
 
 function HomePage() {
   return <div className="py-24">
-    <SimpleSlider/>
+    <HomeBanner/>
   </div>;
 }
 

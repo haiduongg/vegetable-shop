@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 WithoutHeaderLayout.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 function WithoutHeaderLayout({children}) {

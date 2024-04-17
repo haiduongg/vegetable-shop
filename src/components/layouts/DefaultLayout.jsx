@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Header from "../Header/index.jsx";
 
 DefaultLayout.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 function DefaultLayout({children}) {

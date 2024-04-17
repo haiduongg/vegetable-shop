@@ -36,7 +36,7 @@ function Header() {
         <ul className='flex items-center justify-start gap-7'>
           {navLinks.map((item, index) => (
             <li key={index}>
-              <Link to={item.path} className='uppercase font-medium text-lg p-3 hover:text-primary duration-300 transition-colors'>{item.label}</Link>
+              <Link to={item.path} className='uppercase font-medium text-base p-3 hover:text-primary duration-300 transition-colors'>{item.label}</Link>
             </li>
           ))}
         </ul>
