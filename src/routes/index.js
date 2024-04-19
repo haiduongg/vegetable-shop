@@ -1,16 +1,21 @@
+import WithoutHeaderLayout from 'components/layouts/WithoutHeaderLayout';
 import HomePage from '../pages/HomePage';
-import ProductPage from "../pages/ProductPage.jsx";
+import ShopPage from "../pages/ShopPage.jsx";
+import LoginPage from 'pages/LoginPage';
 
 const routes = [
   {
     path: '/',
     component: HomePage,
-    isHeader: true,
   },
   {
-    path: '/product',
-    component: ProductPage,
-    isHeader: false
+    path: '/shop',
+    component: ShopPage,
+  },
+  {
+    path: '/login',
+    component: LoginPage,
+    layout: WithoutHeaderLayout
   }
 ];
 export { routes };

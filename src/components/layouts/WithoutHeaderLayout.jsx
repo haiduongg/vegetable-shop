@@ -1,13 +1,15 @@
+import Footer from 'components/Footer';
 import PropTypes from 'prop-types';
 
 WithoutHeaderLayout.propTypes = {
     children: PropTypes.node.isRequired,
 };
 
-function WithoutHeaderLayout({children}) {
+function WithoutHeaderLayout({ children }) {
     return (
-        <div className='page container'>
-            {children}
+        <div className='page'>
+            <div>{children}</div>
+            <Footer />
         </div>
     );
 }
