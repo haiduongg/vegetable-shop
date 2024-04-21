@@ -13,7 +13,7 @@ export default function VegetableCard({vegetable}) {
       </div>
       <div className='flex flex-col items-center justify-center my-3 text-xl font-bold leading-relaxed '>
         <p>
-          $<span className='text-primary'>10</span>
+          $<span className='text-primary'>{vegetable.price}</span>
         </p>
         <p>Tomato</p>
         <p className='text-primary'>1 kg</p>

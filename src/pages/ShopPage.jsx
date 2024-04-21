@@ -16,7 +16,7 @@ function ShopPage() {
         Reader will be distracted by the readable content of a vegetables
       </p>
 
-      <div className='mt-24'><VegetablesList/></div>
+      <div className='mt-24'><VegetablesList /></div>
     </div>
   );
 }

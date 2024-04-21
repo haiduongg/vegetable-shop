@@ -1,5 +1,5 @@
 import HeadingPage from 'components/HeadingPage';
-import LoginForm from 'components/LoginForm';
+import SignupForm from 'components/SignupForm';
 import FarmerImage from 'assets/images/famer.png';
 import { FaGoogle } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -26,17 +26,11 @@ const LoginPage = () => {
           <div className='w-[430px] min-h-[400px]'>
             <div className='bg-white pt-6 pb-8 px-7'>
               <p className='text-xl font-medium text-center leading-loose mb-6'>
-                Login
+                Sign Up
               </p>
-              <LoginForm />
+              <SignupForm />
 
-              <div className='mt-1 mb-3'>
-                <Link to={'/login/reset'} className='text-xs text-blue-600 hover:underline'>
-                  Forget password
-                </Link>
-              </div>
-
-              <div className='flex items-center justify-between'>
+              <div className='flex items-center justify-between mt-4'>
                 <div className='h-[1px] w-[calc(100%/2-20px)] bg-[#dbdbdb]' />
                 <p className='uppercase text-xs w-fit opacity-70'>Or</p>
                 <div className='h-[1px] w-[calc(100%/2-20px)] bg-[#dbdbdb]' />
@@ -49,13 +43,13 @@ const LoginPage = () => {
 
               <div className='mt-7 flex items-center justify-center gap-1'>
                 <p className='text-[0.875rem] font-light opacity-70'>
-                  New to Picked Fresh?
+                  You had account?
                 </p>
                 <Link
                   to={'/register'}
                   className='text-[0.875rem] font-light text-blue-600 hover:underline'
                 >
-                  Register
+                  Login
                 </Link>
               </div>
             </div>

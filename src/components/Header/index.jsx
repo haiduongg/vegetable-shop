@@ -29,7 +29,6 @@ function Header() {
     },
   ];
 
-  console.log(showSearch);
 
   return (
     <div className='grid grid-cols-4'>

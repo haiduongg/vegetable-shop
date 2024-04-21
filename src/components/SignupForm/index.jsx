@@ -1,7 +1,7 @@
 import { PiEyeBold, PiEyeClosed } from 'react-icons/pi';
 import { useState } from 'react';
 
-const LoginForm = () => {
+const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <form>
@@ -39,10 +39,10 @@ const LoginForm = () => {
         className='w-full h-[40px] bg-[#41b06e] text-white mt-4'
         type='submit'
       >
-        Login
+        Sign Up
       </button>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignupForm;

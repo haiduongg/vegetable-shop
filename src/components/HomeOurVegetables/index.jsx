@@ -1,9 +1,27 @@
-import Carrot from 'assets/images/img-2.png';
-import Button from 'components/Button';
-import VegetablesList from 'components/HomeOurVegetables/VegetablesList';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import productApi from 'api/productApi';
+import Button from 'components/Button';
+import Carrot from 'assets/images/img-2.png';
+import VegetablesList from 'components/HomeOurVegetables/VegetablesList';
+
 export default function OurVegetables() {
+  const [productData,setProductData] = useState([]);
+  useEffect(() => {
+    const fetchProductList = async () => {
+			try {
+				const params = {};
+				const response = await productApi.getAll(params);
+        setProductData(response.data)
+			} catch (error) {
+				console.log('Failed to fetch product list', error);
+			}
+		};
+
+    fetchProductList();
+  },[])
+
   return (
     <div className='flex flex-col items-center justify-center'>
       <img
@@ -20,7 +38,7 @@ export default function OurVegetables() {
       </p>
 
       <div className='mt-24'>
-        <VegetablesList />
+        <VegetablesList productData={productData}/>
       </div>
 
       <Button className={'mt-14'} variant={'secondary'}>
