@@ -4,11 +4,11 @@ import FarmerImage from 'assets/images/famer.png';
 import { FaGoogle } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const SignupPage = () => {
   return (
     <>
       <header className='container'>
-        <HeadingPage label='Login Page' />
+        <HeadingPage label='Sign Up Page' />
       </header>
 
       <div className='bg-[#41b06e] min-h-[600px] grid place-items-center'>
@@ -46,7 +46,7 @@ const LoginPage = () => {
                   You had account?
                 </p>
                 <Link
-                  to={'/register'}
+                  to={'/login'}
                   className='text-[0.875rem] font-light text-blue-600 hover:underline'
                 >
                   Login
@@ -60,4 +60,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;

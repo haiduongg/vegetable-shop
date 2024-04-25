@@ -1,21 +1,53 @@
-import { PiEyeBold, PiEyeClosed } from 'react-icons/pi';
 import { useState } from 'react';
+import { PiEyeBold, PiEyeClosed } from 'react-icons/pi';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import yup from 'ultils/yupGlobal';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const schema = yup.object().shape({
+    username: yup.string().required('Required').email('Email invalid'),
+    password: yup.string().required('Required').password('Password invalid'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmitHandler = (data) => {
+    console.log(data);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmitHandler)}>
       <div className='mb-3'>
         <input
           type='text'
+          name='username'
+          id='username'
+          autoComplete='off'
+          {...register('username')}
           className='w-full h-[38px] border-[1px] border-[#dbdbdb] focus:border-black focus:outline-none p-3 text-[0.875rem] placeholder:font-light'
-          placeholder='Username/Email/Phone number'
+          placeholder='Email'
         />
-        <p className='text-xs text-red-500 mt-1'>Input Invalid</p>
+        {errors.username && (
+          <p className='text-xs text-red-500 mt-1'>{errors.username.message}</p>
+        )}
       </div>
       <div className='relative'>
         <input
           type={showPassword ? 'text' : 'password'}
+          name='password'
+          id='password'
+          autoComplete='off'
+          {...register('password')}
           className='w-full h-[38px] border-[1px] border-[#dbdbdb] focus:border-black focus:outline-none p-3 text-[0.875rem] placeholder:font-light'
           placeholder='Password'
         />
@@ -33,7 +65,9 @@ const LoginForm = () => {
             onClick={() => setShowPassword(!showPassword)}
           />
         )}
-        <p className='text-xs text-red-500 mt-1'>Input Invalid</p>
+        {errors.password && (
+          <p className='text-xs text-red-500 mt-1'>{errors.password.message}</p>
+        )}
       </div>
       <button
         className='w-full h-[40px] bg-[#41b06e] text-white mt-4'
