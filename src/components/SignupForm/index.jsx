@@ -3,6 +3,7 @@ import { PiEyeBold, PiEyeClosed } from 'react-icons/pi';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import yup from 'ultils/yupGlobal';
+import userApi from 'api/userApi';
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,10 +12,8 @@ const SignupForm = () => {
   const schema = yup.object().shape({
     username: yup.string().required('Required').email('Email invalid'),
     password: yup.string().required('Required').password('Password invalid'),
-    confirmPassword: yup
-      .string()
-      .required('Required')
-      .password('Confirm password invalid'),
+    confirmPassword: yup.string()
+      .oneOf([yup.ref('password'), null], 'Confirm password must be match'),
   });
 
   const {
@@ -26,8 +25,16 @@ const SignupForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitHandler = (data) => {
-    console.log(data);
+  const onSubmitHandler = async (data) => {
+    try {
+      await userApi.registerUser({
+        email: data.username,
+        password: data.password,
+      })
+      alert("Register successfully")
+    } catch (error) {
+      alert(error.response.data);
+    }
   };
 
   return (
@@ -40,7 +47,7 @@ const SignupForm = () => {
           {...register('username')}
           autoComplete='off'
           className='w-full h-[38px] border-[1px] border-[#dbdbdb] focus:border-black focus:outline-none p-3 text-[0.875rem] placeholder:font-light'
-          placeholder='Username/Email/Phone number'
+          placeholder='Email'
         />
         {errors.username && (
           <p className='text-xs text-red-500 mt-1'>{errors.username.message}</p>

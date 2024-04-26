@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { PiEyeBold, PiEyeClosed } from 'react-icons/pi';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { PiEyeBold, PiEyeClosed } from 'react-icons/pi';
 import yup from 'ultils/yupGlobal';
+import userApi from 'api/userApi';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,8 +22,19 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitHandler = (data) => {
-    console.log(data);
+  const onSubmitHandler = async (data) => {
+    try {
+      const user = await userApi.loginUser({
+        email: data.username,
+        password: data.password,
+      })
+      console.log(user.data);
+      if (confirm("Login successfully. Continue shop now!")) {
+        window.location.replace("/");
+      }
+    } catch (error) {
+      alert(error.response.data);
+    }
   };
 
   return (
